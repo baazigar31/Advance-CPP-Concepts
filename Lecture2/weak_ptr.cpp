@@ -61,14 +61,17 @@ int main(int argc, char const *argv[]) {
 
 	shared_ptr<int> sp(new int(10));
 	shared_ptr<int> sp2=sp;
-	weak_ptr<int> wk=sp;
-	cout<<wk.expired()<<endl;
+	weak_ptr<int> wk=sp; // Does not add to the ref count.
+	cout<<wk.expired()<<endl; // Its a watcher.
 	cout<<sp.use_count()<<endl;
 	sp.reset();
 	cout<<sp.use_count()<<endl;
 	cout<<wk.expired()<<endl;
 	sp2.reset();
 	cout<<wk.expired()<<endl;
+
+	int* po=new int(8);
+	cout<<po<<endl;
 
 
 
