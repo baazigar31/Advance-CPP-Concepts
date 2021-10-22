@@ -1,0 +1,10 @@
+Constructor 1 of Base class 
+1
+Constructor 1 of Base class 
+Constructor 1 of Derived Class 
+1
+ Constructor 2  of Base Class
+ Constructor 2 of Derived Class
+
+
+Executed In: 0.243 ms
