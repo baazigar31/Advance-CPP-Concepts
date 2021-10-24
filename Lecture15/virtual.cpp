@@ -54,68 +54,31 @@ void file_i_o()
 	#endif
 }
 
-class complex1{
-private:
-	int real;
-	int img;
+class base{
 public:
-	complex1(){}
-	complex1(int a,int b):real(a),img(b){}
-	friend complex1 operator +(complex1 &obj1,const complex1 &obj2);
-	void display(){
-		cout<<this->real<<endl;
-		cout<<this->img<<endl;
-	}
-	friend ostream& operator <<(ostream& o,const complex1& obj);
-
-	complex1* operator -> (){
-		cout<<"Hey"<<endl;
-		return this;
+	int x;
+	virtual void display(){
+		cout<<"Base\n";
 	}
 };
 
-
-// + operator overloaded 
-complex1 operator +(complex1 &obj1,const complex1 &obj2){
-		complex1 res;
-		res.real=obj1.real+obj2.real;
-		res.img=obj1.img+obj2.img;
-		return res;
+class derv1:public base{
+public:
+	void display(){
+		cout<<"Derived 1\n";
 	}
-
-//overloading << operator
-
-
-	ostream& operator <<(ostream& o,const complex1& obj){
-		o<<obj.real<<" "<<obj.img<<endl;
-		return o;
-	}
-
-	
-
-
+};
 
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
 	// Write your code here....
 
-	complex1 c1(1,2);
-	complex1 c2(1,2);
-	complex1 c3=c1+c2;
-	// c3.display();
-	// std::ostream ob;
-	cout<<c3<<endl;
-	// cout<<"Shubham";
+	derv1 d1;
+	d1.display();
 
-
-	//overloading -> operator
-
-	auto *ptr=&c1;
-	 c1->display();
-
-	
-
+	base* ptr=new derv1();
+	ptr->display();
 
 
 
